@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+body { font-family: 'Inter', sans-serif; margin: 0; padding: 20px; background: #f3f6f9; color: #333; }
+h1 { text-align: center; color: #0a3d62; margin-bottom: 30px; }
+h2, h3, h4, h5 { color: #0a3d62; margin-bottom: 8px; }
+
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.progress-line {
+    position: absolute;
+    top: 50%;
+    height: 4px;
+    background: #e0e0e0;
+    z-index: 0;
+    transform: translateY(-50%);
+    border-radius: 2px;
+}
+.progress-line-fill {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 4px;
+    background: #0a3d62;
+    z-index: 0;
+    transform: translateY(-50%);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.progress-step {
+    position: relative;
+    text-align: center;
+    flex: 1;
+}
+
+.progress-step-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.progress-step.active .progress-step-circle {
+    background: #0a3d62;
+}
+
+.progress-step-text {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #bbb;
+}
+
+.progress-step.active .progress-step-text {
+    color: #0a3d62;
+    font-weight: 600;
+}
+
+/* ===== Contenedores ===== */
+form { max-width: 900px; margin: auto; }
+form > .step input:focus,
+form > .step select:focus,
+form > .step textarea:focus {
+    border-color: #0a3d62;
+    box-shadow: 0 0 5px rgba(10,61,98,0.2);
+    outline: none;
+}
+form > .step input,
+form > .step select,
+form > .step textarea {
+    width: 100%;             
+    max-width: 100%;          
+    box-sizing: border-box;   
+    padding: 10px 12px;       
+    border: 1px solid #cfd8dc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Espacio entre inputs */
+    padding: 15px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow: hidden; /* previene que algo se salga */
+    margin: 10px;
+}
+legend { font-weight: 600; font-size: 18px; color: #0a3d62; margin-bottom: 10px; }
+
+
+/* ===== Inputs y selects ===== */
+input, select, textarea { width: 100%; padding: 10px 12px; border: 1px solid #cfd8dc; border-radius: 8px; font-size: 14px; transition: all 0.2s; }
+input:focus, select:focus, textarea:focus { border-color: #0a3d62; box-shadow: 0 0 5px rgba(10,61,98,0.2); outline: none; }
+
+/* ===== Grids ===== */
+.grid { display: grid; gap: 15px; }
+.g2 { grid-template-columns: repeat(2, 1fr); }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.grid input,
+.grid select,
+.grid textarea {
+    width: 100%;
+}
+
+/* ===== Checkboxes y radios ===== */
+.checkbox-group, .radio-group { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 8px; }
+.checkbox-group label, .radio-group label { display: flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer; }
+input[type="checkbox"], input[type="radio"] { accent-color: #0a3d62; }
+
+/* ===== Tablas ===== */
+table { width: 100%; border-collapse: collapse; margin-top: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+table th, table td { border: 1px solid #cfd8dc; padding: 10px; font-size: 14px; text-align: center; }
+table th { background: #e3f2fd; font-weight: 500; }
+table input,
+table select,
+table textarea {
+    width: 100%;            
+    box-sizing: border-box; 
+    padding: 8px 10px;      
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #cfd8dc;
+    transition: all 0.2s;
+}
+table th,
+table td {
+    max-width: 120px;
+    overflow: hidden;      
+    white-space: nowrap;   
+    text-overflow: ellipsis;
+}
+
+table td textarea {
+    white-space: normal;
+}
+
+table input:focus,
+table select:focus,
+table textarea:focus {
+    border-color: #0a3d62;
+    box-shadow: 0 0 5px rgba(10,61,98,0.2);
+    outline: none;
+}
+
+/* ===== Pasos ===== */
+.step { display: none; transition: all 0.3s ease-in-out; }
+.step.active { display: block; }
+
+/* ===== Botones ===== */
+.buttons { margin-top: 20px; display: flex; justify-content: space-between; }
+button { padding: 10px 20px; font-size: 14px; font-weight: 500; border: none; border-radius: 8px; cursor: pointer; background: #0a3d62; color: #fff; transition: all 0.2s; }
+button:hover { background: #06508b; }
+
+/* ===== Mostrar/Ocultar info extra ===== */
+#infoExtra { margin-top: 10px; }
+#infoExtra h3 { margin-top: 15px; }
+
+/* ===== Inputs pequeños ===== */
+input[type="number"], input[type="time"] { max-width: 150px; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .g2 { grid-template-columns: 1fr; }
+    .g3 { grid-template-columns: 1fr; }
+    .buttons { flex-direction: column; gap: 10px; }
+}

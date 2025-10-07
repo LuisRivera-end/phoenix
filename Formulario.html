@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Examen General de VOSH</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h1>Examen General de VOSH</h1>
+        <div class="progress-container">
+            <div class="progress-line"></div>
+            <div class="progress-line-fill" id="progressFill"></div>
+            <div class="progress-step active">
+                <div class="progress-step-circle"></div>
+                <div class="progress-step-text">Paciente</div>
+            </div>
+            <div class="progress-step">
+                <div class="progress-step-circle"></div>
+                <div class="progress-step-text">Historia</div>
+            </div>
+            <div class="progress-step">
+                <div class="progress-step-circle"></div>
+                <div class="progress-step-text">Pre-Test</div>
+            </div>
+            <div class="progress-step">
+                <div class="progress-step-circle"></div>
+                <div class="progress-step-text">Receta</div>
+            </div>
+            <div class="progress-step">
+                <div class="progress-step-circle"></div>
+                <div class="progress-step-text">Salud Ocular</div>
+            </div>
+            <div class="progress-step">
+                <div class="progress-step-circle"></div>
+                <div class="progress-step-text">Óptica</div>
+            </div>
+        </div>
+        <form id="voshForm">
+            <div class="step active" id="step1">
+                <fieldset>
+                    <legend>Seleccionar Paciente</legend>
+                    <div class="grid g3">
+                        <div>
+                            <label>Seleccionar campaña <select id="campaña">
+                                <option value="">Seleccione</option>
+                                <option>UAL</option>
+                            </select></label>
+                        </div>
+                        <div>
+                            <label>Seleccionar paciente<select id="paciente">
+                                <option value="">Seleccione</option>
+                                <option value="Juan">Juan</option>
+                                <option value="Carlos">Carlos</option>
+                                <option value="Maria">Maria</option>
+                            </select></label>
+                        </div>
+                        <div>
+                            <label>Años desde el ultimo examen<input type="number" id="LastEyeExam"></label>
+                        </div>
+                    </div>
+                    <div class="grid g2">
+                        <div>
+                            <label>¿Tiene gafas?
+                                <select id="gafas">
+                                    <option value="">Seleccione</option>
+                                    <option value="si">Sí</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <label>Antigüedad de gafas (años) <input id="antiguedad" type="number" step="0.5"></label>
+                        </div>
+                    </div>
+                    <label>Razón de la visita:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" id="BlurryNearVision"> Visión de cerca borrosa</label>
+                        <label><input type="checkbox" id="BlurryDistanceVision"> Visión de lejos borrosa</label>
+                        <label><input type="checkbox" id="EyePain"> Dolor ocular</label>
+                        <label><input type="checkbox" id="Infection"> Infección</label>
+                        <label><input type="checkbox" id="Burning"> Ardor</label>
+                        <label><input type="checkbox" id="Itching"> Comezón</label>
+                        <label><input type="checkbox" id="LightSensitivity"> Sensibilidad a la luz</label>
+                    </div>
+                    <label>Hábito de uso de lentes:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="uso" value="Wear_Full"> Tiempo completo</label>
+                        <label><input type="radio" name="uso" value="Distance_Only"> Solo lejos</label>
+                        <label><input type="radio" name="uso" value="Near_Only"> Solo cerca</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>
+                        Información complementaria
+                        <button type="button" onclick="toggleInfo()">Mostrar / Ocultar</button>
+                    </legend>
+
+                    <div id="infoExtra" style="display:none;">
+                        <h3>Habla inglés</h3>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="English" value="si"> Sí</label>
+                        </div>
+
+                        <h3>Alfabetizado</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="alfa" value="si"> Sí</label>
+                            <label><input type="radio" name="alfa" value="no"> No</label>
+                        </div>
+
+                        <h3>Presion arterial</h3>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="Dilated"> Presion</label>
+                            <label>Tiempo HH:MM</label>
+                            <input type="time" id="PresionTime">
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="buttons">
+                    <button type="button" onclick="nextStep()">Next</button>
+                    <button type="button" id="generarPDF">Generar PDF</button>
+                </div>
+            </div>
+
+            <div class="step" id="step2">
+                <fieldset>
+                    <legend>Historia de Salud</legend>
+                    <label>Condiciones:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Diabetes</label>
+                        <label><input type="checkbox"> Hipertensión</label>
+                        <label><input type="checkbox"> Enfermedad cardiaca</label>
+                        <label><input type="checkbox"> Glaucoma</label>
+                        <label><input type="checkbox"> Catarata</label>
+                        <label><input type="checkbox"> Migrañas</label>
+                        <label><input type="checkbox"> Embarazada / Lactancia</label>
+                        <label><input type="checkbox"> Otros</label>
+                    </div>
+                    <label>Otros: <input type="text"></label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Alergias a medicamentos</label>
+                    </div>
+                    <label>Alergias a medicamentos <input type="text"></label>
+                    <label>Medicamentos actuales <textarea></textarea></label>
+                </fieldset>
+                <div class="buttons">
+                    <button type="button" onclick="prevStep()">Back</button>
+                    <button type="button" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+            <div class="step" id="step3">
+                <fieldset>
+                    <legend>Pre-Test</legend>
+                    <h3>Agudeza visual</h3>
+                    <table>
+                        <tr>
+                            <th>Con Lentes</th>
+                            <th>Distancia</th>
+                            <th>Cerca</th>
+                        </tr>
+                        <tr>
+                            <td>OD</td>
+                            <td><input placeholder="20/"></td>
+                            <td><input placeholder="20/"></td>
+                        </tr>
+                        <tr>
+                            <td>OS</td>
+                            <td><input placeholder="20/"></td>
+                            <td><input placeholder="20/"></td>
+                        </tr>
+                    </table>
+                    <h3>Pupilas</h3>
+                    <label>OD:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Normal</label>
+                        <label><input type="checkbox"> Lenta</label>
+                        <label><input type="checkbox"> Fija</label>
+                    </div>
+                    <label>OS:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Normal</label>
+                        <label><input type="checkbox"> Lenta</label>
+                        <label><input type="checkbox"> Fija</label>
+                    </div>
+                    <h3>Cover Test</h3>
+                    <h5>Horizontal:</h5>
+                    <label>Lejos:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Orto</label>
+                        <label><input type="checkbox"> Eso</label>
+                        <label><input type="checkbox"> Exo</label>
+                    </div>
+                    <label>Cerca:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Orto</label>
+                        <label><input type="checkbox"> Eso</label>
+                        <label><input type="checkbox"> Exo</label>
+                    </div>
+                    <h5>Vertical:</h5>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> R hiper</label>
+                        <label><input type="checkbox"> L hiper</label>
+                    </div>
+                    <h3>Presión y glucosa</h3>
+                    <div class="grid g2">
+                        <div><label>Presion sanguinea<input type="number" placeholder="mmHg"></label></div>
+                        <div><label>Glucosa <input type="number" placeholder="mg/dL"></label></div>
+                    </div>
+                    <h3>Auto Refracción</h3>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Auto</label>
+                        <label><input type="checkbox"> Ret</label>
+                    </div>
+                    <table>
+                        <tr>
+                            <th></th><th>Esfera</th><th>Cilindro</th><th>Eje</th>
+                        </tr>
+                        <tr>
+                            <td>OD</td><td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera"></td><td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro"></td><td><input type="number" step="1" min="0" max="180" placeholder="0-180"></td>
+                        </tr>
+                        <tr>
+                            <td>OS</td><td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera"></td><td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro"></td><td><input type="number" step="1" min="0" max="180" placeholder="0-180"></td>
+                        </tr>
+                    </table>
+                    <h3>Presión intraocular mmHg</h3>
+                    <div class="grid g2">
+                        <div><label>OD<input type="number"></label></div>
+                        <div><label>OS <input type="number"></label></div>
+                    </div>      
+                </fieldset>
+                <div class="buttons">
+                    <button type="button" onclick="prevStep()">Back</button>
+                    <button type="button" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+            <div class="step" id="step4">
+                <fieldset>
+                    <legend>Receta de Lentes</legend>
+                    <h3>Refracción Final</h3>
+                    <table>
+                        <tr>
+                            <th></th><th>Esfera</th><th>Cilindro</th><th>Eje</th>
+                        </tr>
+                        <tr>
+                            <td>OD</td><td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera"></td><td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro"></td><td><input type="number" step="1" min="0" max="180" placeholder="0-180"></td>
+                        </tr>
+                        <tr>
+                            <td>OS</td><td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera"></td><td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro"></td><td><input type="number" step="1" min="0" max="180" placeholder="0-180"></td>
+                        </tr>
+                    </table>
+                    <label>PD (Distancia Pupilar, mm) <input type="number"></label>
+                    <h3>Mejor Agudeza</h3>
+                    <table>
+                        <tr>
+                            <th>Con Lentes</th>
+                            <th>Distancia</th>
+                            <th>Cerca</th>
+                        </tr>
+                        <tr>
+                            <td>OD</td>
+                            <td><input placeholder="20/"></td>
+                            <td><input placeholder="20/"></td>
+                        </tr>
+                        <tr>
+                            <td>OS</td>
+                            <td><input placeholder="20/"></td>
+                            <td><input placeholder="20/"></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <th>Notas</th>
+                        </tr>
+                        <tr>
+                            <td><textarea></textarea></td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <div class="buttons">
+                    <button type="button" onclick="prevStep()">Back</button>
+                    <button type="button" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+
+            <div class="step" id="step5">
+                <fieldset>
+                    <legend>Salud Ocular</legend>
+                    <h3>Diagnostico</h3>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Miopía</label>
+                        <label><input type="checkbox"> Hipermetropía</label>
+                        <label><input type="checkbox"> Astigmatismo</label>
+                        <label><input type="checkbox"> Presbicia</label>
+                        <label><input type="checkbox"> Anisometropia</label>
+                        <label><input type="checkbox"> Ambliopía</label>
+                        <label><input type="checkbox"> Estrabismo</label>
+                        <label><input type="checkbox"> Retinopatía diabética</label>
+                        <label><input type="checkbox"> Retinopatía hipertensiva</label>
+                        <label><input type="checkbox"> Ojo seco</label>
+                        <label><input type="checkbox"> Pinguécula</label>
+                        <label><input type="checkbox"> Pterigion</label>
+                        <label><input type="checkbox"> Conjutuvitis</label>
+                        <label><input type="checkbox"> Glaucoma</label>
+                        <label><input type="checkbox"  id="diagOtros"> Otros</label>
+                    </div>
+                    <label>Otros: <input type="text" id="diagOtrosText" placeholder="Especifica el diagnóstico"></label>
+
+                    <div class="checkbox-group">
+                        <label>Cataratas</label><label><input type="checkbox"> OD</label><label><input type="checkbox"> OS</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <label>Cirugia previa</label><label><input type="checkbox"> OD</label><label><input type="checkbox"> OS</label>
+                    </div>
+
+                    <h3>Tratamiento</h3>
+                    <h4>Topico</h4>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Antiinfeccioso</label>
+                        <label><input type="checkbox"> Esteroide</label>
+                        <label><input type="checkbox"> Lágrimas artificiales</label>
+                        <label><input type="checkbox"> Glaucoma</label>
+                        <label><input type="checkbox" id="tratOtrosTopico"> Otros</label>
+                    </div>
+                    <textarea id="tratOtrosTopicoText" placeholder="Especifica otros tratamientos tópicos"></textarea>
+
+                    <h4>Oral</h4>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Antiinfeccioso</label>
+                        <label><input type="checkbox"> Esteroide</label>
+                        <label><input type="checkbox"> Lágrimas artificiales</label>
+                        <label><input type="checkbox"> Glaucoma</label>
+                        <label><input type="checkbox" id="tratOtrosOral"> Otros</label>
+                    </div>
+                    <textarea id="tratOtrosOralText" placeholder="Especifica otros tratamientos orales"></textarea>
+
+                    <h3>Referencia</h3>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Glaucoma</label>
+                        <label><input type="checkbox"> Ptegerio</label>
+                        <label><input type="checkbox"> Retina</label>
+                        <label><input type="checkbox"> Estrabismo</label>
+                        <label><input type="checkbox"> Cuerpo Foraneo</label>
+                        <label><input type="checkbox"> Catarata OD</label>
+                        <label><input type="checkbox"> Catarata OS</label>
+                        <label><input type="checkbox" id="refOtros"> Otros</label>
+                    </div>
+                    <textarea id="refOtrosText" placeholder="Especifica otras referencias"></textarea>
+
+                </fieldset>
+                <div class="buttons">
+                    <button type="button" onclick="prevStep()">Back</button>
+                    <button type="button" onclick="nextStep()">Next</button>
+                </div>
+            </div>
+            <div class="step" id="step6">
+                <fieldset>
+                    <legend>Optica</legend>
+                    <h3>Primaria</h3>
+                    <table>
+                        <tr><th></th><th>Esfera</th><th>Cilindro</th><th>Eje</th><th>ADD</th></tr>
+                        <tr><td>OD</td><td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera"></td><td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro"></td><td><input type="number" step="1" min="0" max="180" placeholder="0-180"></td><td><input type="number" step="0.25" min="0" max="10" placeholder="ADD"></td></tr>
+                        <tr><td>OS</td><td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera"></td><td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro"></td><td><input type="number" step="1" min="0" max="180" placeholder="0-180"></td><td><input type="number" step="0.25" min="0" max="10" placeholder="ADD"></td></tr>
+                    </table>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Personalizado</label>
+                        <label><input type="checkbox"> Premade</label>
+                        <label><input type="checkbox"> Lejos</label>
+                        <label><input type="checkbox"> Cerca</label>
+                    </div>
+                    <h3>Secundaria</h3>
+                    <table>
+                        <tr><th></th><th>Esfera</th><th>Cilindro</th><th>Eje</th><th>ADD</th></tr>
+                        <tr><td>OD</td><td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera"></td><td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro"></td><td><input type="number" step="1" min="0" max="180" placeholder="0-180"></td><td><input type="number" step="0.25" min="0" max="10" placeholder="ADD"></td></tr>
+                        <tr><td>OS</td><td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera"></td><td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro"></td><td><input type="number" step="1" min="0" max="180" placeholder="0-180"></td><td><input type="number" step="0.25" min="0" max="10" placeholder="ADD"></td></tr>
+                    </table>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Personalizado</label>
+                        <label><input type="checkbox"> Premade</label>
+                        <label><input type="checkbox"> Lejos</label>
+                        <label><input type="checkbox"> Cerca</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Lentes de sol</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Firma</legend>
+                    <label>Doctor/Firma <input type="text"></label>
+                </fieldset>
+                <div class="buttons">
+                    <button type="button" onclick="prevStep()">Back</button>
+                    <button id="generarPDF" type="button">Generar PDF</button>
+                </div>
+            </div>
+        </form>
+        <div class="gtranslate_wrapper"></div>
+    <style>
+        body {
+        visibility: hidden;
+        }
+    </style>
+    <script>
+    (function () {
+        const defaultLang = "es";
+        const availableLangs = ["es","en","fr","pt","it","de","ru","zh-CN","ar","vi"];
+    
+        const langMap = {
+        "es":"es","es-mx":"es",
+        "en":"en","en-us":"en","en-gb":"en",
+        "fr":"fr","fr-ca":"fr",
+        "pt":"pt","pt-br":"pt",
+        "it":"it",
+        "de":"de",
+        "ru":"ru",
+        "zh":"zh-CN","zh-cn":"zh-CN","zh-sg":"zh-CN","zh-hk":"zh-CN","zh-tw":"zh-CN",
+        "ar":"ar","ar-sa":"ar",
+        "vi":"vi"
+        };
+    
+        function hasCookie(name) {
+        return document.cookie.split(";").some(c => c.trim().startsWith(name + "="));
+        }
+    
+        const rawLang = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage || defaultLang;
+        const lower = ("" + rawLang).toLowerCase();
+        const short = lower.split("-")[0];
+        const mapped = langMap[lower] || langMap[short] || defaultLang;
+    
+        if (mapped === defaultLang) return;
+        if (window.location.search.includes("glang=")) return;
+        if (hasCookie("googtrans")) return;
+        if (localStorage.getItem("gtranslate_user_selected")) return;
+    
+        if (typeof window.doGTranslate === "function") {
+        try {
+            window.doGTranslate(defaultLang + "|" + mapped);
+            sessionStorage.setItem("gtranslate_auto_applied", "1");
+        } catch (e) {}
+        return;
+        }
+    
+        if (!sessionStorage.getItem("gtranslate_redirected")) {
+        try {
+            document.cookie = "googtrans=/auto/" + mapped + ";path=/";
+        } catch (e) {}
+    
+        sessionStorage.setItem("gtranslate_redirected", "1");
+    
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set("glang", mapped);
+            window.location.replace(url.toString());
+        } catch (e) {
+            window.location.replace(window.location.pathname + "?glang=" + mapped + window.location.hash);
+        }
+        }
+    })();
+    </script>
+    
+    <script>
+        window.gtranslateSettings = {
+        "default_language": "es",
+        "native_language_names": true,
+        "languages": ["es", "en", "fr", "pt", "it", "de", "ru", "zh-CN", "ar", "vi"],
+        "wrapper_selector": ".gtranslate_wrapper",
+        "switcher_horizontal_position": "right",
+        "switcher_vertical_position": "bottom",
+        "float_switcher_open_direction": "top",
+        "alt_flags": { "es": "mexico" }
+        };
+    </script>
+    
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+    <style>
+        @media (max-width: 768px) {
+            #gt_float_wrapper {
+                transform: scale(0.8); /* reduce el tamaño al 60% */
+                transform-origin: bottom right; /* sigue anclado a la esquina */
+            }
+
+        }
+    </style>
+
+    
+    <script>
+    (function () {
+        function getGoogTrans() {
+        const m = document.cookie.match('(?:^|; )' + 'googtrans' + '=([^;]*)');
+        return m ? decodeURIComponent(m[1]) : null;
+        }
+    
+        function extractTargetLang(cookieValue) {
+        if (!cookieValue) return null;
+        const parts = cookieValue.split('/').filter(Boolean); 
+        return parts.length ? parts[parts.length - 1] : null;
+        }
+    
+        function applySelection(lang) {
+        if (!lang) return;
+        localStorage.setItem('gtranslate_user_selected', lang);
+        try {
+            const url = new URL(window.location.href);
+            url.searchParams.set('glang', lang);
+            history.replaceState(null, '', url.toString());
+        } catch (e) {}
+        sessionStorage.removeItem('gtranslate_redirected');
+        sessionStorage.removeItem('gtranslate_auto_applied');
+        }
+    
+        let lastCookie = getGoogTrans();
+        const wasAuto = sessionStorage.getItem('gtranslate_redirected') === '1' || sessionStorage.getItem('gtranslate_auto_applied') === '1';
+    
+        try {
+        const initialLang = extractTargetLang(lastCookie);
+        if (initialLang && !wasAuto) {
+            applySelection(initialLang);
+        }
+        } catch (_) {}
+    
+        const interval = setInterval(function () {
+        const curr = getGoogTrans();
+        if (curr !== lastCookie) {
+            lastCookie = curr;
+            const target = extractTargetLang(curr);
+            if (target) {
+            applySelection(target);
+            }
+        }
+        }, 500);
+    
+        setTimeout(function () { clearInterval(interval); }, 60000);
+    
+        // Mostrar el contenido cuando la traducción ya está activa
+        const observer = new MutationObserver(() => {
+        if (document.querySelector("html.translated-ltr, html.translated-rtl")) {
+            document.body.style.visibility = "visible";
+            observer.disconnect();
+        }
+        });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    
+        setTimeout(() => {
+        document.body.style.visibility = "visible";
+        }, 2000);
+    })();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="funciones.js"></script>
+<script>
+
+function getFormValues() {
+    const SpectaclesSelect = document.getElementById("gafas").value;
+    const SpectaclesChecked = SpectaclesSelect === "si";
+    
+    const Spectacles_Age = document.getElementById("antiguedad").value;
+    const LastEyeExam = document.getElementById("LastEyeExam").value;
+
+    // Radios
+    const Wear = document.querySelector('input[name="uso"]:checked')?.value || "";
+    const Literate = document.querySelector('input[name="alfa"]:checked')?.value || "";
+
+    // Checkboxes
+    const BlurryNearVision = document.getElementById("BlurryNearVision").checked;
+    const BlurryDistanceVision = document.getElementById("BlurryDistanceVision").checked;
+    const EyePain = document.getElementById("EyePain").checked;
+    const Infection = document.getElementById("Infection").checked;
+    const Burning = document.getElementById("Burning").checked;
+    const Itching = document.getElementById("Itching").checked;
+    const LightSensitivity = document.getElementById("LightSensitivity").checked;
+    const English = document.getElementById("English").checked;
+    const Dilated = document.getElementById("Dilated").checked;
+
+    return {
+        SpectaclesChecked,
+        Spectacles_Age,
+        BlurryNearVision,
+        BlurryDistanceVision,
+        EyePain,
+        Infection,
+        Burning,
+        Itching,
+        LightSensitivity,
+        Wear,
+        Literate,
+        English,
+        Dilated,
+        LastEyeExam
+    };
+}
+
+const { PDFDocument } = PDFLib;
+
+const PDFMap = {
+    Date: 'Text1',
+    CountryID: 'Text2',
+    PatientID: 'Text3',
+    Urban: 'Button37',
+    Rural: 'Button38',
+    firstName: 'Text5',
+    MI: 'Text4',
+    lastName: 'Text6',
+    Suffix: 'Text7',
+    City: 'Text8',
+    Agriculture: 'Button39',
+    Manufacturing: 'Button45',
+    Student: 'Button40',
+    Driver: 'Button44',
+    Office: 'Button41',
+    Administrator: 'Button43',
+    Other: 'Button42',
+    LastEyeExam: 'Text9',
+    Male: 'Button55',
+    Female: 'Button56',
+    Birthdate: 'Text10',
+    Age: 'Text11',
+    Spectacles: 'Button50',
+    Spectacles_Age: 'Text12',
+    Wear_Full: 'Button46',
+    Distance_Only: 'Button47',
+    Near_Only: 'Button48',
+    BlurryNearVision: 'Button57',
+    BlurryDistanceVision: 'Button58',
+    EyePain: 'Button53',
+    Infection: 'Button54',
+    Burning: 'Button51',
+    Itching: 'Button52',
+    LightSensitivity: 'Button49',
+    Literate_yes:'Button83',
+    Literate_no:'Button84',
+    English: 'Button82',
+    Dilated: 'Button85' 
+};
+
+const formFieldsData = {
+    Juan: {
+        patientID: { value: "1" },
+        countryID: { value: "MX" },
+        locationType: { value: "Urban" },
+        firstName: { value: "Juan" },
+        middleInitial: { value: "A" },
+        lastName: { value: "Pérez López" },
+        city: { value: "Gómez Palacio" },
+        occupation: { value: "Student" },
+        gender: { value: "Male" },
+        birthdate: { value: "20000115" },
+        age: { value: "25" }
+    },
+    Carlos: {
+        patientID: { value: "2" },
+        countryID: { value: "MX" },
+        locationType: { value: "Rural" },
+        firstName: { value: "Carlos" },
+        middleInitial: { value: "B" },
+        lastName: { value: "Ramírez" },
+        city: { value: "Torreón" },
+        occupation: { value: "Driver" },
+        gender: { value: "Male" },
+        birthdate: { value: "19951220" },
+        age: { value: "29" }
+    },
+    Maria: {
+        patientID: { value: "3" },
+        countryID: { value: "MX" },
+        locationType: { value: "Urban" },
+        firstName: { value: "Maria" },
+        middleInitial: { value: "C" },
+        lastName: { value: "González" },
+        city: { value: "Saltillo" },
+        occupation: { value: "Office" },
+        gender: { value: "Female" },
+        birthdate: { value: "20030210" },
+        age: { value: "21" }
+    }
+};
+async function fillPDFSafe(data) {
+    try {
+        const existingPdfBytes = await fetch("Formulario.pdf").then(res => res.arrayBuffer());
+        const pdfDoc = await PDFDocument.load(existingPdfBytes);
+
+        const helveticaFont = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+
+        const form = pdfDoc.getForm();
+
+        const dataForm = getFormValues();
+
+        const fechaActual = new Date();
+        const formatoCorto = fechaActual.toISOString().split('T')[0];
+
+        const mapValues = {
+            [PDFMap.Date]: formatoCorto,
+            [PDFMap.CountryID]: data.countryID.value,
+            [PDFMap.PatientID]: data.patientID.value,
+            [PDFMap.Rural]: data.locationType.value === "Rural",
+            [PDFMap.Urban]: data.locationType.value === "Urban",
+            [PDFMap.firstName]: data.firstName.value,
+            [PDFMap.MI]: data.middleInitial.value,
+            [PDFMap.lastName]: data.lastName.value,
+            [PDFMap.City]: data.city.value,
+            [PDFMap.Student]: data.occupation.value === "Student",
+            [PDFMap.Driver]: data.occupation.value === "Driver",
+            [PDFMap.Office]: data.occupation.value === "Office",
+            [PDFMap.Agriculture]: data.occupation.value === "Agriculture",
+            [PDFMap.Manufacturing]: data.occupation.value === "Manufacturing",
+            [PDFMap.Administrator]: data.occupation.value === "Administrator",
+            [PDFMap.Other]: data.occupation.value === "Other",
+            [PDFMap.LastEyeExam]: dataForm.LastEyeExam,
+            [PDFMap.Male]: data.gender.value === "Male",
+            [PDFMap.Female]: data.gender.value === "Female",
+            [PDFMap.Birthdate]: data.birthdate.value,
+            [PDFMap.Age]: data.age.value,
+            [PDFMap.Spectacles]: dataForm.SpectaclesChecked,
+            [PDFMap.Spectacles_Age]: dataForm.Spectacles_Age,
+            [PDFMap.BlurryNearVision]: dataForm.BlurryNearVision,
+            [PDFMap.BlurryDistanceVision]: dataForm.BlurryDistanceVision,
+            [PDFMap.EyePain]: dataForm.EyePain,
+            [PDFMap.Infection]: dataForm.Infection,
+            [PDFMap.Burning]: dataForm.Burning,
+            [PDFMap.Itching]: dataForm.Itching,
+            [PDFMap.LightSensitivity]: dataForm.LightSensitivity,
+            [PDFMap.Wear_Full]: dataForm.Wear === "Wear_Full",
+            [PDFMap.Distance_Only]: dataForm.Wear === "Distance_Only",
+            [PDFMap.Near_Only]: dataForm.Wear === "Near_Only",
+            [PDFMap.English]: dataForm.English,
+            [PDFMap.Literate_yes]: dataForm.Literate === "si",
+            [PDFMap.Literate_no]: dataForm.Literate === "no",
+            [PDFMap.Dilated]: dataForm.Dilated,
+        };
+
+        Object.entries(mapValues).forEach(([pdfField, value]) => {
+            try {
+                const field = form.getField(pdfField);
+
+                // Checkbox
+                if (typeof value === "boolean") {
+                    value ? field.check() : field.uncheck();
+                } else {
+                    field.setText(value.toString());
+                    field.updateAppearances(helveticaFont);
+                    field.defaultUpdateAppearances(PDFLib.rgb(0, 0, 0));
+                }
+            } catch (err) {
+                //console.warn("Campo no encontrado:", pdfField);
+            }
+        });
+
+        form.flatten();
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes], { type: "application/pdf" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "FormularioVOSH_Lleno.pdf";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+
+        console.log("PDF generado y descargado correctamente ✅");
+    } catch (err) {
+        console.error("Error generando PDF:", err);
+    }
+}
+document.addEventListener("DOMContentLoaded", () => {
+    const boton = document.getElementById("generarPDF");
+    const pacienteSelect = document.getElementById("paciente");
+
+    boton.addEventListener("click", async () => {
+        const selected = pacienteSelect.value;
+        const data = formFieldsData[selected] || {};
+        await fillPDFSafe(data);
+    });
+});
+
+</script>
+    </body>
+</html>

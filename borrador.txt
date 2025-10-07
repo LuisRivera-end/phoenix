@@ -1,0 +1,50 @@
+                        <label><input type="checkbox" id="BlurryNearVision"> Visión de cerca borrosa</label>
+                        <label><input type="checkbox" id="BlurryDistanceVision"> Visión de lejos borrosa</label>
+                        <label><input type="checkbox" id="EyePain"> Dolor ocular</label>
+                        <label><input type="checkbox" id="Infection"> Infección</label>
+                        <label><input type="checkbox" id="Burning"> Ardor</label>
+                        <label><input type="checkbox" id="Itching"> Comezón</label>
+                        <label><input type="checkbox" id="LightSensitivity"> Sensibilidad a la luz</label>
+
+
+
+                                BlurryNearVision,
+        BlurryDistanceVision,
+        EyePain,
+        Infection,
+        Burning,
+        Itching,
+        LightSensitivity
+
+
+                            <label>Hábito de uso de lentes:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="uso"> Tiempo completo</label>
+                        <label><input type="radio" name="uso"> Solo lejos</label>
+                        <label><input type="radio" name="uso"> Solo cerca</label>
+                    </div>
+
+                        Wear_Full: 'Button46',
+    Distance_Only: 'Button47',
+    Near_Only: 'Button48',
+
+
+                        <div id="infoExtra" style="display:none;">
+                        <h3>Habla inglés</h3>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="English" value="si"> Sí</label>
+                        </div>
+
+                        <h3>Alfabetizado</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="alfa" value="si"> Sí</label>
+                            <label><input type="radio" name="alfa" value="no"> No</label>
+                        </div>
+
+                        <h3>Presion arterial</h3>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" id="Dilated"> Presion</label>
+                            <label>Tiempo HH:MM</label>
+                            <input type="time" id="PresionTime">
+                        </div>
+                    </div>
