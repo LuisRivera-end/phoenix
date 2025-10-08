@@ -7,6 +7,7 @@ function getFormValues() {
     const LastEyeExam = document.getElementById("LastEyeExam").value;
     const presionTime = document.getElementById("PresionTime").value;
     const MedicationsUsed =document.getElementById("MedicationsUsed").value;
+    const OtherConditionText =document.getElementById("OtherConditionText").value;
     const MedicationAllergiesText =document.getElementById("MedicationAllergiesText").value;
     const ODDistancePre =document.getElementById("ODDistancePre").value;
     const ODNearPre =document.getElementById("ODNearPre").value;
@@ -17,6 +18,8 @@ function getFormValues() {
     const ODAutoSphere =document.getElementById("ODAutoSphere").value;
     const ODAutoCilinder =document.getElementById("ODAutoCilinder").value;
     const ODAutoGrades =document.getElementById("OSAutoSphere").value;
+    const OSAutoSphere =document.getElementById("OSAutoSphere").value;
+    const OSAutoGrades =document.getElementById("OSAutoGrades").value;
     const OSAutoCilinder =document.getElementById("OSAutoGrades").value;
     const IOPOD =document.getElementById("IOPOD").value;
     const IOPOS =document.getElementById("IOPOS").value;
@@ -53,6 +56,7 @@ function getFormValues() {
     const SecundaryOSGrades =document.getElementById("SecundaryOSGrades").value;
     const SecundaryOSADD =document.getElementById("SecundaryOSADD").value;
     const Signature =document.getElementById("Signature").value;
+    
 
     // Radios
     const Wear = document.querySelector('input[name="uso"]:checked')?.value || "";
@@ -75,6 +79,7 @@ function getFormValues() {
     const Cataract = document.getElementById("Cataract").checked;
     const Headaches = document.getElementById("Headaches").checked;
     const PregnantBreastfeeding = document.getElementById("Pregnant/Breastfeeding").checked;
+    const OtherCondition = document.getElementById("OtherCondition").checked;
     const MedicationAllergies = document.getElementById("MedicationAllergies").checked;
     const ODNormalPupile = document.getElementById("ODNormalPupile").checked;
     const ODSlowPupile = document.getElementById("ODSlowPupile").checked;
@@ -161,6 +166,8 @@ function getFormValues() {
         Cataract,
         Headaches,
         PregnantBreastfeeding,
+        OtherCondition,
+        OtherConditionText,
         MedicationAllergies,
         presionTime,
         MedicationsUsed,
@@ -190,6 +197,8 @@ function getFormValues() {
         ODAutoSphere,
         ODAutoCilinder,
         ODAutoGrades,
+        OSAutoSphere,
+        OSAutoGrades,
         OSAutoCilinder,
         IOPOD,
         IOPOS,
@@ -321,39 +330,43 @@ const PDFMap = {
     Glaucoma: 'Button63',
     Cataract: 'Button67',
     Headaches:'Button60',
-    PregnantBreastfeeding:'Button6',
-    MedicationAllergies: 'Button82',
+    PregnantBreastfeeding:'Button66',
+    OtherCondition: 'Button61',
+    OtherConditionText:'Text144',
+    MedicationAllergies: 'Button59',
     presionTime: 'Text145',
     MedicationAllergiesText: 'Text13',
     MedicationsUsed: 'Text14',
-    ODNormalPupile: 'Button82',
-    ODSlowPupile: 'Button85',
-    ODFixedPupile: 'Button64',
-    OSNormalPupile: 'Button65',
-    OSSlowPupile: 'Button62',
-    OSFixedPupile: 'Button63',
-    OrthoDistance: 'Button67',
-    EsoDistance:'Button60',
-    ExoDistance:'Button6',
-    OrthoNear: 'Button82',
-    EsoNear: 'Text145',
-    ExoNear: 'Text13',
-    Rhiper: 'Text14',
-    Lhiper: 'Button82',
-    AutoRefAuto: 'Button85',
-    AutoRefRet: 'Button64',
-    ODDistancePre: 'Button65',
-    ODNearPre: 'Button62',
-    OSDistancePre: 'Button63',
-    OSNearPre: 'Button67',
-    BloodPressure:'Button60',
-    Glucosa:'Button6',
-    ODAutoSphere: 'Button82',
-    ODAutoCilinder: 'Text145',
-    ODAutoGrades: 'Text13',
-    OSAutoCilinder: 'Text14',
-    IOPOD:'Button6',
-    IOPOS: 'Button82',
+    ODNormalPupile: 'Button68',
+    ODSlowPupile: 'Button69',
+    ODFixedPupile: 'Button70',
+    OSNormalPupile: 'Button74',
+    OSSlowPupile: 'Button75',
+    OSFixedPupile: 'Button76',
+    OrthoDistance: 'Button71',
+    EsoDistance:'Button77',
+    ExoDistance:'Button78',
+    OrthoNear: 'Button72',
+    EsoNear: 'Button79',
+    ExoNear: 'Button80',
+    Rhiper: 'Button73',
+    Lhiper: 'Button81',
+    AutoRefAuto: 'Button91',
+    AutoRefRet: 'Button92',
+    ODDistancePre: 'Text16',
+    ODNearPre: 'Text19',
+    OSDistancePre: 'Text17',
+    OSNearPre: 'Text18',
+    BloodPressure:'Text143',
+    Glucosa:'Text15',
+    ODAutoSphere: 'Text23',
+    ODAutoCilinder: 'Text20',
+    ODAutoGrades: 'Text39',
+    OSAutoSphere: 'Text24',
+    OSAutoCilinder: 'Text37',
+    OSAutoGrades: 'Text38',
+    IOPOD:'Text21',
+    IOPOS: 'Text22',
     ODFinalSphere: 'Text26',
     ODFinalCilinder: 'Text40',
     ODFinalGrades: 'Text42',
@@ -391,14 +404,14 @@ const PDFMap = {
     TopicalNSAID: 'Button112',
     TopicalGlaucoma: 'Button113',
     TopicalArtificial: 'Button114',
-    tratOtrosTopicoText: 'Button86',
+    tratOtrosTopicoText: '',
     OralAntiInfective: 'Button107',
     OralSteroid: 'Button109',
     OralNSAID: 'Button111',
     OralGlaucoma: 'Button115',
-    tratOtrosOralText: 'Button86',
+    tratOtrosOralText: '',
     RefGlaucoma: 'Button116',
-    RefPterygium: 'Button116',
+    RefPterygium: 'Button117',
     RefRetina: 'Button118',
     RefStrabismus: 'Button119',
     RefForeign: 'Button120',
@@ -538,6 +551,8 @@ async function fillPDFSafe(data) {
             [PDFMap.presionTime]: dataForm.presionTime,
             [PDFMap.MedicationAllergiesText]: dataForm.MedicationAllergiesText,
             [PDFMap.MedicationsUsed]: dataForm.MedicationsUsed,
+            [PDFMap.OtherConditionText]: dataForm.OtherConditionText,
+            [PDFMap.OtherCondition]: dataForm.OtherCondition,
             [PDFMap.ODNormalPupile]: dataForm.ODNormalPupile,
             [PDFMap.ODSlowPupile]: dataForm.ODSlowPupile,
             [PDFMap.ODFixedPupile]: dataForm.ODFixedPupile,
@@ -564,8 +579,22 @@ async function fillPDFSafe(data) {
             [PDFMap.ODAutoCilinder]: dataForm.ODAutoCilinder,
             [PDFMap.ODAutoGrades]: dataForm.ODAutoGrades,
             [PDFMap.OSAutoCilinder]: dataForm.OSAutoCilinder,
+            [PDFMap.OSAutoSphere]: dataForm.OSAutoSphere,
+            [PDFMap.OSAutoGrades]: dataForm.OSAutoGrades,
             [PDFMap.IOPOD]: dataForm.IOPOD,
             [PDFMap.IOPOS]: dataForm.IOPOS,
+            [PDFMap.PD]: dataForm.PD,
+            [PDFMap.BestAcuityODDistance]: dataForm.BestAcuityODDistance,
+            [PDFMap.BestAcuityODNear]: dataForm.BestAcuityODNear,
+            [PDFMap.BestAcuityOSDistance]: dataForm.BestAcuityOSDistance,
+            [PDFMap.BestAcuityOSNear]: dataForm.BestAcuityOSNear,
+            [PDFMap.Notes]: dataForm.Notes,
+            [PDFMap.ODFinalSphere]: dataForm.ODFinalSphere,
+            [PDFMap.ODFinalCilinder]: dataForm.ODFinalCilinder,
+            [PDFMap.ODFinalGrades]: dataForm.ODFinalGrades,
+            [PDFMap.OSFinalSphere]: dataForm.OSFinalSphere,
+            [PDFMap.OSFinalCilinder]: dataForm.OSFinalCilinder,
+            [PDFMap.OSFinalGrades]: dataForm.OSFinalGrades,
             [PDFMap.Myopia]: dataForm.Myopia,
             [PDFMap.Hyperopia]: dataForm.Hyperopia,
             [PDFMap.Astigmatism]: dataForm.Astigmatism,
@@ -607,7 +636,7 @@ async function fillPDFSafe(data) {
             [PDFMap.refOtros]: dataForm.refOtros,
             [PDFMap.refOtrosText]: dataForm.refOtrosText,
             [PDFMap.PrimaryODSphere]: dataForm.PrimaryODSphere,
-            [PDFMap.PrimaryODCilinder]: dataForm.OraPrimaryODCilinderlNSAID,
+            [PDFMap.PrimaryODCilinder]: dataForm.PrimaryODCilinder,
             [PDFMap.PrimaryODGrades]: dataForm.PrimaryODGrades,
             [PDFMap.PrimaryODADD]: dataForm.PrimaryODADD,
             [PDFMap.PrimaryOSSphere]: dataForm.PrimaryOSSphere,
@@ -632,6 +661,7 @@ async function fillPDFSafe(data) {
             [PDFMap.SecundaryNear]: dataForm.SecundaryNear,
             [PDFMap.Sunglasses]: dataForm.Sunglasses,
             [PDFMap.Signature]: dataForm.Signature,
+
         };
 
         Object.entries(mapValues).forEach(([pdfField, value]) => {
