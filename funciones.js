@@ -271,14 +271,11 @@ function validateStep4() {
     }
 
     // 2. PD
-    const pdInput = document.querySelector('#step4 input[type="number"]');
-    if (pdInput.value.trim() !== "") {
-        const pd = parseFloat(pdInput.value);
-        if (isNaN(pd) || pd < 40 || pd > 75) {
+    const pdInput = document.getElementById("PD").value;
+        if  (pdInput < 40 || pdInput > 75) {
             valid = false;
             messages.push("PD debe ser un número entre 40 y 75 mm.");
         }
-    }
 
     // 3. Mejor agudeza (opcional, texto)
     const agudezaInputs = document.querySelectorAll('#step4 table:nth-of-type(2) input');

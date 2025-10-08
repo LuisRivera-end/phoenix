@@ -47,4 +47,300 @@
                             <label>Tiempo HH:MM</label>
                             <input type="time" id="PresionTime">
                         </div>
+                    </div
+                    
+                        <label><input type="checkbox" id="Diabetes"> Diabetes</label>
+                        <label><input type="checkbox" id="HighBloodPressure"> Hipertensión</label>
+                        <label><input type="checkbox" id=" HeartDisease"> Enfermedad cardiaca</label>
+                        <label><input type="checkbox" id="Glaucoma"> Glaucoma</label>
+                        <label><input type="checkbox" id="Cataract"> Catarata</label>
+                        <label><input type="checkbox" id="Headaches"> Migrañas</label>
+                        <label><input type="checkbox" id="Pregnant/Breastfeeding"> Embarazada / Lactancia</label>
+                    <label>Otros: <input type="text" id="OtherConditionText"></label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" id="MedicationAllergies"> Alergias a medicamentos</label>
                     </div>
+                    <label>Alergias a medicamentos <input type="text" id="MedicationAllergiesText"></label>
+                    <label>Medicamentos actuales <textarea id=" MedicationsUsed"></textarea></label>
+
+
+                            HighBloodPressure,
+        HeartDisease,
+        Glaucoma,
+        Cataract,
+        Headaches,
+        PregnantBreastfeeding,
+        MedicationAllergies,
+
+
+        <td><input placeholder="20/" id="ODDistancePre"></td>
+                            <td><input placeholder="20/" id="ODNearPre"></td>
+                            <td><input placeholder="20/" id="OSDistancePre"></td>
+                            <td><input placeholder="20/" id="OSNearPre"></td>
+                            <label><input type="checkbox" id="ODNormalPupile"> Normal</label>
+                        <label><input type="checkbox" id="ODSlowPupile"> Lenta</label>
+                        <label><input type="checkbox" id="ODFixedPupile"> Fija</label>
+                        <label><input type="checkbox" id="OSNormalPupile"> Normal</label>
+                        <label><input type="checkbox" id="OSSlowPupile"> Lenta</label>
+                        <label><input type="checkbox" id="OSFixedPupile"> Fija</label>
+                        <label><input type="checkbox" id="OrthoDistance"> Orto</label>
+                        <label><input type="checkbox" id="EsoDistance"> Eso</label>
+                        <label><input type="checkbox" id="ExoDistance"> Exo</label>
+                        <label><input type="checkbox" id="OrthoNear"> Orto</label>
+                        <label><input type="checkbox" id="EsoNear"> Eso</label>
+                        <label><input type="checkbox" id="ExoNear"> Exo</label>
+                        <label><input type="checkbox" id="Rhiper"> R hiper</label>
+                        <label><input type="checkbox" id="Lhiper"> L hiper</label>
+                        <label>Presion sanguinea<input type="number" placeholder="mmHg" id="BloodPressure"></label>
+                        <label>Glucosa <input type="number" placeholder="mg/dL" id="Glucosa"></label>
+                        <label><input type="checkbox" id="AutoRefAuto"> Auto</label>
+                        <label><input type="checkbox" id="AutoRefRet"> Ret</label>
+                        <td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera" id="ODAutoSphere"></td>
+                            <td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro" id="ODAutoCilinder"></td>
+                            <td><input type="number" step="1" min="0" max="180" placeholder="0-180" id="ODAutoGrades"></td>
+                            <td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera" id="OSAutoSphere"></td>
+                            <td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro" id="OSAutoCilinder"></td>
+                            <td><input type="number" step="1" min="0" max="180" placeholder="0-180" id="OSAutoGrades"></td>
+                            <div><label>OD<input type="number" id="IOPOD"></label></div>
+                        <div><label>OS <input type="number" id="IOPOS"></label></div>
+
+
+    const ODDistancePre =document.getElementById("ODDistancePre").value;
+    const ODNearPre =document.getElementById("ODNearPre").value;
+    const OSDistancePre =document.getElementById("OSDistancePre").value;
+    const OSNearPre =document.getElementById("OSNearPre").value;
+    const BloodPressure =document.getElementById("BloodPressure").value;
+    const Glucosa =document.getElementById("Glucosa").value;
+    const ODAutoSphere =document.getElementById("ODAutoSphere").value;
+    const ODAutoCilinder =document.getElementById("ODAutoCilinder").value;
+    const ODAutoGrades =document.getElementById("OSAutoSphere").value;
+    const OSAutoCilinder =document.getElementById("OSAutoGrades").value;
+    const IOPOD =document.getElementById("IOPOD").value;
+    const IOPOS =document.getElementById("IOPOS").value;
+
+            ODNormalPupile,
+        ODSlowPupile,
+        ODFixedPupile,
+        OSNormalPupile,
+        OSSlowPupile,
+        OSFixedPupile,
+        OrthoDistance,
+        EsoDistance,
+        ExoDistance,
+        OrthoNear,
+        EsoNear,
+        ExoNear,
+        Rhiper,
+        Lhiper,
+        AutoRefAuto,
+        AutoRefRet,
+        ODDistancePre,
+        ODNearPre,
+        OSDistancePre,
+        OSNearPre,
+        BloodPressure,
+        Glucosa,
+        ODAutoSphere,
+        ODAutoCilinder,
+        ODAutoGrades,
+        OSAutoCilinder,
+        IOPOD,
+        IOPOS,
+
+                            <td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera" id="ODFinalSphere"></td>
+                            <td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro" id="ODFinalCilinder"></td>
+                            <td><input type="number" step="1" min="0" max="180" placeholder="0-180" id="ODFinalGrades"></td>
+                                                        <td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera" id="OSFinalSphere"></td>
+                            <td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro" id="OSFinalCilinder"></td>
+                            <td><input type="number" step="1" min="0" max="180" placeholder="0-180" id="OSFinalGrades"></td>
+                                                <label>PD (Distancia Pupilar, mm) <input type="number" id="PD"></label>
+                                                                            <td><input placeholder="20/" id="BestAcuityODDistance"></td>
+                            <td><input placeholder="20/" id="BestAcuityODNear"></td>
+                                                        <td><input placeholder="20/" id="BestAcuityOSDistance"></td>
+                            <td><input placeholder="20/" id="BestAcuityOSNear"></td>
+                                                        <td><textarea id="Notes"></textarea></td>
+
+
+                                                            const ODFinalSphere =document.getElementById("ODFinalSphere").value;
+    const ODFinalCilinder =document.getElementById("ODFinalCilinder").value;
+    const ODFinalGrades =document.getElementById("ODFinalGrades").value;
+    const OSFinalSphere =document.getElementById("OSFinalSphere").value;
+    const OSFinalCilinder =document.getElementById("OSFinalCilinder").value;
+    const OSFinalGrades =document.getElementById("OSFinalGrades").value;
+    const PD =document.getElementById("PD").value;
+    const BestAcuityODDistance =document.getElementById("BestAcuityODDistance").value;
+    const BestAcuityODNear =document.getElementById("BestAcuityODNear").value;
+    const BestAcuityOSDistance =document.getElementById("BestAcuityOSDistance").value;
+    const BestAcuityOSNear =document.getElementById("BestAcuityOSNear").value;
+    const Notes =document.getElementById("Notes").value;
+
+                    ODFinalSphere,
+        ODFinalCilinder,
+        ODFinalGrades,
+        OSFinalSphere,
+        OSFinalCilinder,
+        OSFinalGrades,
+        PD,
+        BestAcuityODDistance,
+        BestAcuityODNear,
+        BestAcuityOSDistance,
+        BestAcuityOSNear,
+        Notes,
+
+
+
+                                <label><input type="checkbox" id="Myopia"> Miopía</label>
+                        <label><input type="checkbox" id="Hyperopia"> Hipermetropía</label>
+                        <label><input type="checkbox" id="Astigmatism"> Astigmatismo</label>
+                        <label><input type="checkbox" id="Presbyopia"> Presbicia</label>
+                        <label><input type="checkbox" id="Anisometropia"> Anisometropia</label>
+                        <label><input type="checkbox" id="Amblyopia"> Ambliopía</label>
+                        <label><input type="checkbox" id="Strabismus"> Estrabismo</label>
+                        <label><input type="checkbox" id="DiabeticRet"> Retinopatía diabética</label>
+                        <label><input type="checkbox" id="HtnRet"> Retinopatía hipertensiva</label>
+                        <label><input type="checkbox" id="DryEye"> Ojo seco</label>
+                        <label><input type="checkbox" id="Pinguecula"> Pinguécula</label>
+                        <label><input type="checkbox" id="Pterygium"> Pterigion</label>
+                        <label><input type="checkbox" id="Conjunctivitis"> Conjutuvitis</label>
+                        <label><input type="checkbox" id="DiagGlaucoma"> Glaucoma</label>
+                        <label><input type="checkbox" id="diagOtros"> Otros</label>
+                        <label>Otros: <input type="text" id="diagOtrosText" placeholder="Especifica el diagnóstico"></label>
+                        <label><input type="checkbox" id="CataractsOD"> OD</label>
+                        <label><input type="checkbox" id="CataractsOS"> OS</label>
+                        <label><input type="checkbox" id="PriorOD"> OD</label>
+                        <label><input type="checkbox" id="PriorOS"> OS</label>
+                        <label><input type="checkbox" id="TopicalAnti-Infective"> Antiinfeccioso</label>
+                        <label><input type="checkbox" id="TopicalSteroid"> Esteroide</label>
+                        <label><input type="checkbox" id="TopicalCombo"> Combo</label>
+                        <label><input type="checkbox" id="TopicalNSAID"> NSAID</label>
+                        <label><input type="checkbox" id="TopicalGlaucoma"> Glaucoma</label>
+                        <label><input type="checkbox" id="TopicalArtificial"> Lágrimas artificiales</label>
+                        <label><input type="checkbox" id="tratOtrosTopico"> Otros</label>
+                        <textarea id="tratOtrosTopicoText" placeholder="Especifica otros tratamientos tópicos"></textarea>
+                                                <label><input type="checkbox" id="OralAnti-Infective"> Antiinfeccioso</label>
+                        <label><input type="checkbox" id="OralSteroid"> Esteroide</label>
+                        <label><input type="checkbox" id="OralNSAID"> NSAID</label>
+                        <label><input type="checkbox" id="OralGlaucoma"> Glaucoma</label>
+                        <label><input type="checkbox" id="tratOtrosOral"> Otros</label>
+                        <textarea id="tratOtrosOralText" placeholder="Especifica otros tratamientos orales"></textarea>
+                        <label><input type="checkbox" id="RefGlaucoma"> Glaucoma</label>
+                        <label><input type="checkbox" id="RefPterygium"> Ptegerio</label>
+                        <label><input type="checkbox" id="RefRetina"> Retina</label>
+                        <label><input type="checkbox" id="RefStrabismus"> Estrabismo</label>
+                        <label><input type="checkbox" id="RefForeign"> Cuerpo Foraneo</label>
+                        <label><input type="checkbox" id="RefCataractOD"> Catarata OD</label>
+                        <label><input type="checkbox" id="RefCataractOS"> Catarata OS</label>
+                        <label><input type="checkbox" id="refOtros"> Otros</label>
+                        <textarea id="refOtrosText" placeholder="Especifica otras referencias"></textarea>
+
+
+Myopia
+Hyperopia
+Astigmatism
+Presbyopia
+Anisometropia
+Amblyopia
+Strabismus
+DiabeticRet
+HtnRet
+DryEye
+Pinguecula
+Pterygium
+Conjunctivitis
+DiagGlaucoma
+diagOtrosText
+CataractsOD
+CataractsOS
+PriorOD
+TopicalAntiInfective
+TopicalSteroid
+TopicalCombo
+TopicalNSAID
+TopicalGlaucoma
+TopicalArtificial
+tratOtrosTopicoText
+OralAntiInfective
+OralSteroid
+OralNSAID
+OralGlaucoma
+tratOtrosOralText
+RefGlaucoma
+RefPterygium
+RefRetina
+RefStrabismus
+RefForeign
+RefCataractOD
+RefCataractOS
+refOtros
+refOtrosText
+
+
+        Myopia: 'Button86',
+    Hyperopia: 'Button87',
+    Astigmatism: 'Button88',
+    Presbyopia: 'Button89',
+    Anisometropia: 'Button90',
+    Amblyopia: 'Button93',
+    Strabismus: 'Button94',
+    DiabeticRet: 'Button95',
+    HtnRet: 'Button96',
+    DryEye: 'Button97',
+    Pinguecula: 'Button98',
+    Pterygium: 'Button99',
+    Conjunctivitis: 'Button100',
+    DiagGlaucoma: 'Button101',
+    diagOtrosText: 'Text33',
+    CataractsOD: 'Button102',
+    CataractsOS: 'Button103',
+    PriorOD: 'Button104',
+    PriorOS:'Button105',
+    TopicalAntiInfective: 'Button106',
+    TopicalSteroid: 'Button108',
+    TopicalCombo: 'Button110',
+    TopicalNSAID: 'Button112',
+    TopicalGlaucoma: 'Button113',
+    TopicalArtificial: 'Button114',
+    tratOtrosTopicoText: 'Button86',
+    OralAntiInfective: 'Button107',
+    OralSteroid: 'Button109',
+    OralNSAID: 'Button111',
+    OralGlaucoma: 'Button115',
+    tratOtrosOralText: 'Button86',
+    RefGlaucoma: 'Button116',
+    RefPterygium: 'Button116',
+    RefRetina: 'Button118',
+    RefStrabismus: 'Button119',
+    RefForeign: 'Button120',
+    RefCataractOD: 'Button121',
+    RefCataractOS: 'Button122',
+    refOtros: 'Button123',
+    refOtrosText: 'Text35',
+
+
+                                <td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera" id="PrimaryODSphere"></td>
+                            <td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro" id="PrimaryODCilinder"></td>
+                            <td><input type="number" step="1" min="0" max="180" placeholder="0-180" id="PrimaryODGrades"></td>
+                            <td><input type="number" step="0.25" min="0" max="10" placeholder="ADD" id="PrimaryODADD"></td>
+                                                        <td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera" id="PrimaryOSSphere"></td>
+                            <td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro" id="PrimaryOSCilinder"></td>
+                            <td><input type="number" step="1" min="0" max="180" placeholder="0-180" id="PrimaryOSGrades"></td>
+                            <td><input type="number" step="0.25" min="0" max="10" placeholder="ADD" id="PrimaryOSADD"></td>
+                        </tr>
+                                                <label><input type="checkbox" id="PrimaryCustom"> Personalizado</label>
+                        <label><input type="checkbox" id="PrimaryPremade"> Premade</label>
+                        <label><input type="checkbox" id="PrimaryDistance"> Lejos</label>
+                        <label><input type="checkbox" id="PrimaryNear"> Cerca</label>
+                                                    <td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera" id="SecundaryODSphere"></td>
+                            <td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro" id="SecundaryODCilinder"></td>
+                            <td><input type="number" step="1" min="0" max="180" placeholder="0-180" id="SecundaryODGrades"></td>
+                            <td><input type="number" step="0.25" min="0" max="10" placeholder="ADD" id="SecundaryODADD"></td>
+                                                        <td><input type="number" step="0.25" min="-20" max="20" placeholder="Esfera" id="SecundaryOSSphere"></td>
+                            <td><input type="number" step="0.25" min="-10" max="10" placeholder="Cilindro" id="SecundaryOSCilinder"></td>
+                            <td><input type="number" step="1" min="0" max="180" placeholder="0-180" id="SecundaryOSGrades"></td>
+                            <td><input type="number" step="0.25" min="0" max="10" placeholder="ADD" id="SecundaryOSADD"></td>
+                                                    <label><input type="checkbox" id="SecundaryCustom"> Personalizado</label>
+                        <label><input type="checkbox" id="SecundaryPremade"> Premade</label>
+                        <label><input type="checkbox" id="SecundaryDistance"> Lejos</label>
+                        <label><input type="checkbox" id="SecundaryNear"> Cerca</label>
+                                                <label><input type="checkbox" id="Sunglasses"> Lentes de sol</label>
+                                                                    <label>Doctor/Firma <input type="text" id="Signature"></label>
